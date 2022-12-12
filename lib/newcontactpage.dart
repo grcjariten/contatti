@@ -1,3 +1,4 @@
+import 'package:contatti/functions.dart';
 import 'package:flutter/material.dart';
 
 class NewContactPage extends StatefulWidget {
@@ -8,10 +9,35 @@ class NewContactPage extends StatefulWidget {
 }
 
 class _NewContactPageState extends State<NewContactPage> {
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("Insert the form\n Insert a save button"),
+    return Scaffold(
+      backgroundColor: Colors.black87,
+      appBar: AppBar(
+        backgroundColor: Colors.black54,
+        centerTitle: true,
+        title: Text(
+          "New Contact",
+          style: contactStyle(),
+        ),
+      ),
+      body: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Form(
+            key: _formKey,
+            child: Container(
+              color: Colors.blueGrey,
+              child: Column(
+                children: [
+                  contactField("name"),
+                  contactField("lastName"),
+                  contactField("numbah"),
+                  saveButton(_formKey, context)
+                ],
+              ),
+            ),
+          )),
     );
   }
 }
