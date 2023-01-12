@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "126899707941",
+    "project_id": "rubrica-exercise",
+    "storage_bucket": "rubrica-exercise.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126899707941:android:01e7ded4034fc5b7941fcc",
+        "android_client_info": {
+          "package_name": "com.grcjariten.rubrica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126899707941-lpetajbn9alp3jb2au1h4ljr122bcdkk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO4Q6o6sEK485Nr1V0E8swx4QULS9vT18"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126899707941-lpetajbn9alp3jb2au1h4ljr122bcdkk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
