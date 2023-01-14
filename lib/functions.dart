@@ -38,6 +38,7 @@ ElevatedButton saveButton(
             print("DocumentSnapshot added with ID: ${doc.id}"));
         ScaffoldMessenger.of(context)
             .showSnackBar(const SnackBar(content: Text("Contact Saved!")));
+        Navigator.pop(context);
       }
     },
     child: Text(
