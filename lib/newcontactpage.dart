@@ -12,6 +12,9 @@ class NewContactPage extends StatefulWidget {
 
 class _NewContactPageState extends State<NewContactPage> {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController lastnameController = TextEditingController();
+  final TextEditingController numberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +36,10 @@ class _NewContactPageState extends State<NewContactPage> {
               color: Colors.blueGrey,
               child: Column(
                 children: [
-                  contactField("name"),
-                  contactField("lastName"),
-                  contactField("numbah"),
-                  saveButton(widget.db, _formKey, context)
+                  contactField("name", nameController),
+                  contactField("lastName", lastnameController),
+                  contactField("numbah", numberController),
+                  saveButton(widget.db, _formKey, nameController, lastnameController, numberController, context)
                 ],
               ),
             ),

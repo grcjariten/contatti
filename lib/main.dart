@@ -11,51 +11,45 @@ void main() async {
   runApp(MaterialApp(home: HomePage()));
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  FirebaseFirestore db = FirebaseFirestore.instance;
 
   List<Contact> contactList = [
     Contact("Gianmarco", "David", '3274908591'),
     Contact("Filippo", "Trippiedi", '3274908592'),
     Contact("Samuele", "Nigrelli", '3274908593'),
   ];
+  List<Contact> contacts = [];
+  @override
+  void initState() {
+
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    var db = FirebaseFirestore.instance;
-    var data = getData(db);
 
-    // final user = <String, dynamic>{
-    //   "name": "Ada",
-    //   "lastname": "Lovelace",
-    //   "number": 1815
-    // };
-    //
-    // db.collection("rubrica").add(user).then((DocumentReference doc) =>
-    //     print("DocumentSnapshot added with ID: ${doc.id}"));
-    //
+
     return Scaffold(
       backgroundColor: Colors.black87,
       body: Padding(
         padding: const EdgeInsets.only(top: 25.0),
-        child: ListView.builder(
-          itemCount: contactList.length,
-          itemBuilder: (context, index) {
-            Contact contact = contactList[index];
-            return GestureDetector(
-              onTap: () {
-                showNumber(context, contact.number);
-              },
-              child: ListTile(
-                leading: CircleAvatar(child: Text(contact.name[0])),
-                title: Text(
-                  "${contact.name} ${contact.lastName}",
-                  style: contactStyle(),
-                ),
-              ),
-            );
-          },
-        ),
+        child:
+          StreamBuilder(
+            stream: FirebaseFirestore.instance.collection("rubrica").snapshots(),
+            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) =>
+              buildList(context, snapshot)
+
+          )
       ),
       floatingActionButton: FloatingActionButton(
         child: const Text("+"),
@@ -67,3 +61,5 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+
